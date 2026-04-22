@@ -1,0 +1,116 @@
+/* Configurações Globais */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column; /* Alinha o título e o card em coluna */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Estilização do Título (fora do card) */
+#cabecalho {
+    margin-bottom: 20px; /* Espaço entre o título e o card */
+    text-align: center;
+}
+
+#todolist {
+    font-size: 2.5rem;
+    color: #1c1e21;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* O Card de Tarefas */
+main {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 450px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção de Entrada */
+#input-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #dddfe2;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#task-input:focus {
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+}
+
+/* Botão Adicionar */
+#botaoAdicionar {
+    padding: 0 20px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#botaoAdicionar:hover {
+    background-color: #166fe5;
+}
+
+/* Lista de Tarefas */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    padding: 15px 10px;
+    border-bottom: 1px solid #f0f2f5;
+    color: #4b4f56;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+#task-list li:last-child {
+    border-bottom: none;
+}
+
+#task-list li:hover {
+    background-color: #f9fafb;
+    border-radius: 8px;
+}
+
+/* Espaçamento entre o checkbox e o texto */
+#task-list li input[type="checkbox"] {
+    margin-right: 15px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #1877f2; /* Deixa o check com a cor do seu botão */
+}
+
+/* Estilo para quando a tarefa estiver marcada (opcional) */
+#task-list li:has(input:checked) {
+    color: #a0a0a0;
+    text-decoration: line-through; /* Risca o texto */
+    background-color: #fcfcfc;
+}  

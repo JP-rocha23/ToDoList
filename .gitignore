@@ -1,0 +1,21 @@
+# IDEs e Editores
+.vscode/
+.idea/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependências (caso você venha a usar Node.js/NPM no futuro)
+node_modules/
+
+# Temporários
+dist/
+build/
