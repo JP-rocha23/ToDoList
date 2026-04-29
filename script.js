@@ -6,6 +6,15 @@ function carregarTarefas() {
         return;
     }
     else{
+
+        const novaTarefa = {
+            descricao: tarefa.value,
+            concluido: false,
+            prioridade: "Alta"
+        };
+
+        const tarefaJSON = JSON.stringify(novaTarefa); //Transformando o objeto em JSON
+
         const lista = document.getElementById("task-list");
         const item = document.createElement("li");
         const checkbox = document.createElement("input");
