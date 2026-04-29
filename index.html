@@ -9,16 +9,18 @@
 </head>
 <body>
     <header id = "cabecalho">
-        <h1 id = "todolist">TO-DO List</h1>
+        <h1 id = "todolist">TO-DO list </h1>
     </header>
     <main>
-        <form id = "input-section">
+        <form id = "input-section" onsubmit="event.preventDefault(); carregarTarefas();">
             <input type="text" id="task-input" placeholder="Digite uma nova tarefa...">
             <button type="submit" id="botaoAdicionar" >Adicionar</button>
         </form>
 
         <section id = "tasks-section">
-            <ul id="task-list"></ul>
+            <ul id="task-list">
+                <li class="tarefa-item"></li>
+            </ul>
         </section>
     </main>
     

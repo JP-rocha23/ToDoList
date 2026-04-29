@@ -114,3 +114,32 @@ main {
     text-decoration: line-through; /* Risca o texto */
     background-color: #fcfcfc;
 }  
+
+.botao-deletar {
+    background-color: #ff4d4d; /* Vermelho vibrante */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.botao-deletar:hover {
+    background-color: #cc0000; /* Vermelho mais escuro quando passa o mouse */
+}
+
+#task-list li {
+    display: flex;
+    align-items: center; /* Alinha verticalmente no centro */
+    justify-content: space-between; /* Empurra o texto para um lado e o botão para o outro */
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    gap: 10px;
+}
+
+#task-list li span {
+    flex-grow: 1; 
+    text-align: left; 
+}

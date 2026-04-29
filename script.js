@@ -12,24 +12,21 @@ function carregarTarefas() {
         checkbox.type = "checkbox";
 
         const textoTarefa = document.createElement("span");
+        
+        const botaoDeletar = document.createElement("button");
+        botaoDeletar.textContent = "🗑️";
+        botaoDeletar.className = "botao-deletar";
+
+        botaoDeletar.onclick = function() {
+            lista.removeChild(item); 
+        };
+
         textoTarefa.textContent = tarefa.value;
 
         item.appendChild(checkbox);
         item.appendChild(textoTarefa);
+        item.appendChild(botaoDeletar);
         lista.appendChild(item);
         tarefa.value = "";
     }
 }
-
-const formulario = document.getElementById("input-section");
-
-window.addEventListener("load", function() { // Garantir que o DOM esteja completamente carregado antes de adicionar o event listener
-    const formulario = document.getElementById("input-section");
-    
-    if (formulario) {
-        formulario.addEventListener("submit", function(event) {
-            event.preventDefault(); 
-            carregarTarefas();
-        });
-    }
-});
