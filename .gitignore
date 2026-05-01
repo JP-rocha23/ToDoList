@@ -13,14 +13,13 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Dependências (caso você venha a usar Node.js/NPM no futuro)
 node_modules/
 
 # Temporários
 dist/
 build/
 
-# Python (Ambientes virtuais e cache)
+# Python
 __pycache__/
 *.py[cod]
 *$py.class

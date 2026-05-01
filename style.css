@@ -105,7 +105,7 @@ main {
     cursor: pointer;
     width: 18px;
     height: 18px;
-    accent-color: #1877f2; /* Deixa o check com a cor do seu botão */
+    accent-color: #1877f2; 
 }
 
 /* Estilo para quando a tarefa estiver marcada (opcional) */

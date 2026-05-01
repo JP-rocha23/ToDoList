@@ -8,14 +8,14 @@ CORS(app) #Permite que o frontend acesse a API, ou seja, o JS acessa o o Python
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
-        user="root",
-        password="jp2004", #Lembrar de adicionar a senha do MySQL aqui e o user também, se necessário
+        user="", #Lembrar de adicionar o user do MySQL aqui, se necessário
+        password="", #Lembrar de adicionar a senha do MySQL aqui e o user também, se necessário
         database="todo_list" # O banco que você criou no inicializar_banco
     )
 
 def incializar_banco():
                                                           
-    temp_db = mysql.connector.connect(host="localhost", user="root", password="jp2004") #Conecta ao MySQL sem especificar o banco de dados
+    temp_db = mysql.connector.connect(host="localhost", user="", password="") #Conecta ao MySQL sem especificar o banco de dados
 
     cursor = temp_db.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS todo_list") 

@@ -1,35 +1,80 @@
-# 📝 To-Do List Project
+# 📝 To-Do List Full Stack
 
-Um gestor de tarefas simples e funcional desenvolvido para aprofundar conhecimentos em **JavaScript Moderno (ES6+)**, manipulação do **DOM** e estilização com **CSS3**.
+Este é um projeto de lista de tarefas completo, desenvolvido para consolidar conhecimentos em integração de sistemas, comunicação assíncrona com **Fetch API** e persistência de dados em banco de dados relacional.
 
-Este projeto faz parte do meu percurso de estudos em desenvolvimento web, focando na criação de interfaces reativas e intuitivas sem a utilização de frameworks externos.
+O projeto utiliza uma arquitetura cliente-servidor, onde o Front-end em JavaScript consome uma API RESTful construída com Python e Flask, armazenando as informações em um banco MySQL.
 
-## 🚀 Funcionalidades
 
-- [x] **Adicionar Tarefas:** Criação dinâmica de itens na lista.
-- [x] **Atalhos de Teclado:** Suporte para tecla `Enter` dentro do campo de input (via submissão de formulário).
-- [x] **Checklist:** Cada tarefa possui um checkbox para marcação de itens concluídos.
-- [x] **Interface Responsiva:** Design moderno e minimalista que se adapta a diferentes ecrãs.
-- [x] **Prevenção de Comportamento Padrão:** Implementação de `event.preventDefault()` para garantir que a aplicação funcione como uma SPA (Single Page Application).
+
+## 📸 Demonstração do Projeto
+
+
+![Demonstração da Interface](imagens/Imagem_Navegador.png)
+*Legenda: Interface principal do sistema carregando tarefas do banco de dados.*
+
+
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5:** Estrutura semântica.
-- **CSS3:** Flexbox, animações de `fadeIn` e seletores modernos como `:has()`.
-- **JavaScript (Vanilla):** Lógica de negócio, manipulação de eventos e atualização dinâmica do DOM.
+*   **Front-end**: HTML5, CSS3 e JavaScript Moderno (ES6+).
+*   **Back-end**: Python 3.10+, Flask e Flask-CORS.
+*   **Banco de Dados**: MySQL 8.0.
+*   **Comunicação**: Fetch API (Métodos GET, POST e DELETE).
 
-## 📂 Estrutura do Projeto
 
-```text
-├── index.html       # Estrutura da página e formulário
-├── style.css        # Estilização moderna e layout
-├── script.js        # Lógica principal e manipulação do DOM
-└── .gitignore       # Configuração de ficheiros ignorados no Git
+
+## 🚀 Funcionalidades
+
+- [x] **Persistência de Dados**: As tarefas não somem ao recarregar a página (F5).
+- [x] **Renderização Dinâmica**: O DOM é atualizado apenas após a confirmação do banco de dados.
+- [x] **Setup Automático**: O script Python verifica e cria o banco de dados e as tabelas necessárias no primeiro `run`.
+- [x] **Gerenciamento de Erros**: Tratamento de exceções tanto no servidor quanto no cliente (catch de erros de rede).
+- [x] **Possibilidade** de excluir ou dar "Check" em cada tarefa
+
+
+## 📂 Estrutura de Arquivos
+
+- [x] **app.py**: Contém a API Flask, rotas REST e lógica de conexão com MySQL.
+- [x] **script.js**: Gerencia as chamadas de API (fetch) e manipulação do DOM.
+- [x] **index.html**: Estrutura semântica da aplicação.
+- [x] **style.css**: Estilização moderna e responsiva.
+- [x] **.gitignore**: Protege o repositório de arquivos desnecessários (__pycache__, venv, etc).
+
+
+
+## 📋 Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado:
+1. [Python 3.x](https://www.python.org/)
+2. [MySQL Server](https://dev.mysql.com/downloads/installer/)
+3. [Flask e Flask-cors](https://pypi.org/project/flask-cors/)
+
+
+## 🔧 Configuração e Uso
+
+### 1. Preparação do Ambiente
+Instale as bibliotecas necessárias via terminal:
+```bash
+pip install flask flask-cors mysql-connector-python 
 ```
 
-## ⚙️ Como Executar
- * git clone [https://github.com/JP-rocha23/ToDoList.git](https://github.com/JP-rocha23/ToDoList.git) 
+### 2. Configuração do Banco de Dados
+No arquivo app.py, ajuste as credenciais de acesso dentro das funções de conexão:
+```bash
+# Exemplo de configuração
+host="localhost",
+user="seu_usuario",
+password="sua_password"
+```
 
- * Abrir o **index.htlm** em qualquer navegador moderno
+### 3. Execução:
+1. Inicie o servidor Backend:
+```bash 
+python app.py
+``` 
 
-Desenvolvido por João Pedro Rocha
+2.Abra o arquivo **index.html** no seu navegador (recomendado usar a extensão Live Server).
+
+### 👨‍💻 Autor
+---
+**João Pedro Rocha**, estudando de Ciência da Computação.
