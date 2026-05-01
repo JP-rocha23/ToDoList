@@ -5,7 +5,22 @@ function renderizarTarefaNaTela(tarefaObj) {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.checked = tarefaObj.concluido; // Usa o status que veio do banco
+    checkbox.onclick = function() {
+        fetch(`http://127.0.0.1:5000/tarefas/${tarefaObj.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ concluido: checkbox.checked })
+        })
+        .then(response => response.json())
+        .then(dados => {
+            console.log(`Tarefa com id ${tarefaObj.id} atualizada com sucesso.`); 
+        })
+        .catch(erro => {
+            console.error("Erro na comunicação com o servidor:", erro);
+        });
+    };
 
     const textoTarefa = document.createElement("span");
     textoTarefa.textContent = tarefaObj.descricao;
@@ -15,8 +30,20 @@ function renderizarTarefaNaTela(tarefaObj) {
     botaoDeletar.className = "botao-deletar";
     
     botaoDeletar.onclick = function() {
-        // Aqui depois faremos o fetch(DELETE)
-        lista.removeChild(item);
+        fetch(`http://127.0.0.1:5000/tarefas/${tarefaObj.id}`, {
+            method: 'DELETE',
+        })
+        .then(response => {
+            if (response.ok) {
+                lista.removeChild(item); 
+                console.log(`Tarefa com id ${tarefaObj.id} deletada com sucesso.`);
+            }
+            else {
+                alert("Erro ao deletar a tarefa no banco de dados.");
+            }
+        })
+        .catch(erro => 
+            console.error("Erro na comunicação com o servidor:", erro));       
     };
 
     item.appendChild(checkbox);

@@ -75,6 +75,37 @@ def listar_tarefas(): #Rota para listar todas as tarefas, o JS vai chamar essa r
     conector.close()
     return jsonify(lista_tarefas)
 
+@app.route('/tarefas/<int:tarefa_id>', methods=['DELETE'])
+def deletar_tarefa(tarefa_id):
+    conector = get_db_connection()
+    cursor = conector.cursor()
+
+    query = "DELETE FROM tarefas WHERE id = %s"
+    cursor.execute(query, (tarefa_id,))
+
+    conector.commit()
+    cursor.close()
+    conector.close()
+
+    return jsonify({"message": "Tarefa deletada com sucesso!"}), 200
+
+@app.route('/tarefas/<int:tarefa_id>', methods=['PUT'])
+def dar_check_tarefa(tarefa_id):
+    dados = request.get_json()
+    concluido = dados.get('concluido')
+
+    conector = get_db_connection()
+    cursor = conector.cursor()
+
+    query = "UPDATE tarefas SET concluido = %s WHERE id = %s"
+    cursor.execute(query, (concluido, tarefa_id))
+
+    conector.commit()
+    cursor.close()
+    conector.close()
+
+    return jsonify({"message": "Tarefa atualizada com sucesso!"}), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
