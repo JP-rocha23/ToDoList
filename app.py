@@ -8,17 +8,17 @@ CORS(app) #Permite que o frontend acesse a API, ou seja, o JS acessa o o Python
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
-        user="",
-        password="", #Lembrar de adicionar a senha do MySQL aqui e o user também, se necessário
+        user="root",
+        password="jp2004", #Lembrar de adicionar a senha do MySQL aqui e o user também, se necessário
         database="todo_list" # O banco que você criou no inicializar_banco
     )
 
 def incializar_banco():
-                                                          #Add o user abaixo se necessário, e a senha também
-    temp_db = mysql.connector.connect(host="localhost", user="", password="") #Conecta ao MySQL sem especificar o banco de dados
+                                                          
+    temp_db = mysql.connector.connect(host="localhost", user="root", password="jp2004") #Conecta ao MySQL sem especificar o banco de dados
 
     cursor = temp_db.cursor()
-    cursor.execute("CREATE DATABASE IF NOT EXISTS todo_list") #Cria o banco de dados caso ele não exista
+    cursor.execute("CREATE DATABASE IF NOT EXISTS todo_list") 
     temp_db.close()
 
     conector = get_db_connection()
@@ -58,6 +58,23 @@ def adicionar_tarefa():
     cursor.close()
     conector.close()
 
-    return jsonify({'id': novo_id, 
-                    "mensagem": "Tarefa adicionada com sucesso!"}), 201
+    return jsonify({
+    "id": novo_id,
+    "descricao": descricao,
+    "concluido": concluido,
+    "prioridade": prioridade
+    }), 201
 
+@app.route('/tarefas', methods=['GET'])
+def listar_tarefas(): #Rota para listar todas as tarefas, o JS vai chamar essa rota para mostrar as tarefas na tela quando recarregar a página
+    conector = get_db_connection()
+    cursor = conector.cursor(dictionary=True) 
+    cursor.execute("SELECT * FROM tarefas")
+    lista_tarefas = cursor.fetchall()
+    cursor.close()
+    conector.close()
+    return jsonify(lista_tarefas)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
